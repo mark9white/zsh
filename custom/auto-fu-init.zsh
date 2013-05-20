@@ -40,6 +40,7 @@ EOT
 bindkey-advice-before "^G" afu+cancel
 bindkey-advice-before "^[" afu+cancel
 bindkey-advice-before "^M" afu+cancel afu+accept-line
+bindkey -M menuselect "^M" .accept-line
 
 # delete unambiguous prefix when accepting line
 function afu+delete-unambiguous-prefix () {
@@ -73,7 +74,7 @@ afu-ad-delete-unambiguous-prefix afu+accept-and-hold
 
 # yay for multiple-cursor.el
 
-zstyle ':completion:*' completer _oldlist _complete
+zstyle ':completion:*' completer _oldlist _complete _expand
 #zle -N zle-keymap-select auto-fu-zle-keymap-select
 
 zstyle ':auto-fu:highlight' input bold
@@ -81,3 +82,4 @@ zstyle ':auto-fu:highlight' completion fg=white,dim
 zstyle ':auto-fu:highlight' completion/one fg=blue,dim
 zstyle ':auto-fu:var' postdisplay ''
 zstyle ':auto-fu:var' track-keymap-skip opp
+zstyle ':auto-fu:var' autoable-function/skipwords "*\**"

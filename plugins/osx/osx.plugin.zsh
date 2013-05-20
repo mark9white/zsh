@@ -34,7 +34,7 @@ EOF
           launch session "Default Session"
           set current_session to current session
           tell current_session
-            write text "${command}; clear;"
+            write text "${command};"
           end tell
         end tell
       end tell
@@ -156,4 +156,42 @@ function trash() {
 
 function vncviewer() {
   open vnc://$@
+}
+
+function ppfd() {
+  osascript 2>/dev/null <<EOF
+    tell application "Path Finder"
+      set the window_list to the finder windows
+      set front_window to item 1 of window_list
+      set front_path to the POSIX path of the target of the front finder window
+      return front_path
+    end tell
+EOF
+}
+
+function ppfs() {
+  osascript 2>/dev/null <<EOF
+  set output to ""
+  tell application "Path Finder"
+    set pf_selection to selection
+    if pf_selection is missing value then
+      return
+    end if
+    set item_count to count pf_selection
+    repeat with i from 1 to count pf_selection
+      set pf_item to item i of pf_selection
+      try
+        set current_path to (POSIX path of pf_item)
+        if i is less than item_count - 1 then set the_delimter to "
+  "
+        if i is item_count then set the_delimiter to ""
+        set output to output & current_path & the_delimter
+      end try
+    end repeat
+  end tell
+EOF
+}
+
+function cdpf() {
+  cd "$(ppfd)"
 }

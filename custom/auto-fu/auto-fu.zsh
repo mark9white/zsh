@@ -559,7 +559,7 @@ afu-trap-send-break () { return $((128 + $1)); }
 
 # XXX: redefined!
 eval "
-auto-fu-init () { with-afu-trapint $functions[auto-fu-init] }
+auto-fu-init () { $functions[auto-fu-init] }
 "
 
 # Entry point.

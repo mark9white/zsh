@@ -37,8 +37,8 @@ EOT
     zle -N "$fun"
     bindkey -M afu "$key" "$fun"
 }
-bindkey-advice-before "^G" afu+cancel
-bindkey-advice-before "^[" afu+cancel
+#bindkey-advice-before "^G" afu+cancel
+#bindkey-advice-before "^[" afu+cancel
 bindkey-advice-before "^M" afu+cancel afu+accept-line
 
 # delete unambiguous prefix when accepting line
@@ -80,4 +80,5 @@ zstyle ':auto-fu:highlight' input bold
 zstyle ':auto-fu:highlight' completion fg=white,dim
 zstyle ':auto-fu:highlight' completion/one fg=blue,dim
 zstyle ':auto-fu:var' postdisplay ''
-zstyle ':auto-fu:var' track-keymap-skip opp
+zstyle ':auto-fu:var' autoable-function/skiplines \
+  'rake *' 'gem *' 'git log *' 'git commit *'

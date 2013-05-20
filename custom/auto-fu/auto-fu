@@ -207,7 +207,7 @@ afu-rh-finish () {
 	region_highlight+="$1" 
 }
 auto-fu-init () {
-	with-afu-trapint with-afu-zle-rebinding afu-line-init
+	with-afu-zle-rebinding afu-line-init
 }
 'with-afu~' () {
 	zle auto-fu-extend -- with-afu "$@"

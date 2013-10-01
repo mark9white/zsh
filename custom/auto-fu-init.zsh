@@ -81,6 +81,7 @@ zstyle ':auto-fu:highlight' input bold
 zstyle ':auto-fu:highlight' completion fg=white,dim
 zstyle ':auto-fu:highlight' completion/one fg=blue,dim
 zstyle ':auto-fu:var' postdisplay ''
+
 zstyle ':auto-fu:var' autoable-function/skipwords "*\**"
 zstyle ':auto-fu:var' autoable-function/skiplines '*rake *' 'gem *' 'git log *' 'git commit *' 'scp *'  'svn commit *'
 
